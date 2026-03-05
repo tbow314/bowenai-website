@@ -1,9 +1,15 @@
-import HeroGlobe from "@/components/HeroGlobe";
+"use client";
+
+import dynamic from "next/dynamic";
 import RobotAgent from "@/components/RobotAgent";
 import OfferCards from "@/components/OfferCards";
 import LeadForm from "@/components/LeadForm";
-import RevenueDashboard from "@/components/RevenueDashboard";
 import PDFVideoEngine from "@/components/PDFVideoEngine";
+
+// recharts uses browser APIs — must be client-only
+const RevenueDashboard = dynamic(() => import("@/components/RevenueDashboard"), { ssr: false });
+// Spline also uses browser APIs
+const HeroGlobe = dynamic(() => import("@/components/HeroGlobe"), { ssr: false });
 
 export default function Home() {
   return (
