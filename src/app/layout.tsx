@@ -1,20 +1,16 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-space-grotesk",
 });
 
 export const metadata: Metadata = {
-  title: "Bowen AI Strategy Group | AI Built for Impact",
-  description: "We architect interactive dashboards, high-converting ad creatives, and automated video audits that run your business on autopilot.",
+  title: "Bowen AI Strategy Group | Premium Business Intelligence",
+  description: "Optimize your enterprise with high-fidelity AI strategies and autonomous workflows. AI Built for Impact.",
 };
 
 export default function RootLayout({
@@ -23,10 +19,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html lang="en" className="dark">
+      <body className={`${spaceGrotesk.variable} font-display antialiased bg-[#080c0d] text-slate-100 overflow-x-hidden`}>
         {children}
       </body>
     </html>
