@@ -1,59 +1,89 @@
-import { ArrowRight } from 'lucide-react';
-import LeadCapture from '@/components/LeadCapture';
-import BentoGrid from '@/components/BentoGrid';
-import SoftExamples from '@/components/SoftExamples';
+import LeadAgent from '@/components/LeadAgent';
+import { ArrowRight, BarChart3, Globe, PlaySquare } from 'lucide-react';
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center p-6 md:p-12 lg:p-24 bg-black text-white overflow-hidden relative selection:bg-[#39FF14]/30 selection:text-black">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-[#39FF14]/10 rounded-full blur-[150px] pointer-events-none -z-10"></div>
-      <div className="absolute top-[40%] right-[-10%] w-[600px] h-[600px] bg-[#00D9FF]/10 rounded-full blur-[150px] pointer-events-none -z-10"></div>
+    <main className="min-h-screen bg-black text-white selection:bg-blue-600 selection:text-white font-sans overflow-x-hidden">
 
-      <header className="z-50 w-full max-w-7xl flex flex-col md:flex-row items-center justify-between font-mono text-sm mb-24 gap-6 md:gap-0">
-        <div className="flex items-center gap-3 backdrop-blur-xl bg-white/5 border border-white/10 px-6 py-3 rounded-2xl shadow-xl">
-          <div className="w-2 h-2 rounded-full bg-[#39FF14] animate-pulse"></div>
-          <span className="font-bold tracking-wider">BOWEN AI</span>
-          <span className="text-zinc-500">|</span>
-          <span className="text-zinc-300">Strategy Group</span>
-        </div>
-        <a href="#consulting" className="group flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 px-6 py-3 rounded-2xl transition-all duration-300 hover:border-[#39FF14]/30 hover:text-[#39FF14]">
-          Book Advisory <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-        </a>
-      </header>
+      {/* SECTION 1: The Magnet (1-1 Consulting) */}
+      <section className="min-h-screen flex flex-col items-center justify-center text-center px-6 relative">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] md:w-[800px] h-[600px] md:h-[800px] bg-blue-900/20 blur-[120px] rounded-full pointer-events-none"></div>
 
-      <section className="relative w-full max-w-5xl flex flex-col items-center text-center mb-32 z-10">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm font-medium mb-8 text-zinc-300 backdrop-blur-md">
-          <span className="w-2 h-2 rounded-full bg-[#00D9FF] animate-ping opacity-75 absolute"></span>
-          <span className="w-2 h-2 rounded-full bg-[#00D9FF] relative"></span>
-          Now accepting new deployments
-        </div>
-        <h1 className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-8 leading-[0.9] drop-shadow-2xl">
-          <span className="text-zinc-100">AI BUILT FOR</span><br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#39FF14] via-[#00D9FF] to-[#0055FF] pb-4">
-            IMPACT.
-          </span>
-        </h1>
-        <p className="text-lg md:text-2xl text-zinc-400 max-w-3xl mb-12 font-light leading-relaxed">
-          Stop drowning in static PDFs and clunky legacy software.<br className="hidden md:block" />
-          We architect <strong className="text-zinc-200 font-semibold">interactive dashboards</strong>, <strong className="text-zinc-200 font-semibold">high-converting ad creatives</strong>, and <strong className="text-zinc-200 font-semibold">automated video audits</strong> that run your business on autopilot.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 w-full justify-center">
-          <a href="#lead-capture" className="bg-[#39FF14] text-black font-black px-10 py-5 rounded-full hover:bg-white transition-all shadow-[0_0_30px_rgba(57,255,20,0.3)] hover:shadow-[0_0_50px_rgba(255,255,255,0.4)] hover:scale-105 active:scale-95 flex items-center justify-center gap-3">
-            REQUEST A MOCKUP
-          </a>
+        <div className="z-10 max-w-5xl w-full">
+          <div className="inline-flex items-center gap-2 border border-zinc-800 bg-zinc-900/50 px-5 py-2 rounded-full text-xs uppercase tracking-widest text-zinc-400 mb-8 backdrop-blur-md">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            Bowen AI Strategy Group
+          </div>
+          <h1 className="text-5xl md:text-8xl font-black mb-8 tracking-tighter leading-[1.1]">
+            AI BUILT FOR <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-emerald-400 to-emerald-200">IMPACT.</span>
+          </h1>
+          <p className="text-lg md:text-2xl text-zinc-400 mb-12 max-w-3xl mx-auto leading-relaxed">
+            Stop guessing where you are losing money. We diagnose operational leaks and architect the autonomous systems that run your business.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <button className="w-full sm:w-auto bg-white text-black px-8 py-4 rounded-full font-bold text-lg hover:scale-105 transition-transform shadow-[0_0_40px_-10px_rgba(255,255,255,0.2)] flex items-center justify-center gap-2">
+              Apply for 1-1 Audit <ArrowRight size={20} />
+            </button>
+            <button className="w-full sm:w-auto bg-transparent border border-zinc-700 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-zinc-900 transition-colors">
+              View Arsenal
+            </button>
+          </div>
         </div>
       </section>
 
-      <LeadCapture />
-      <BentoGrid />
-      <SoftExamples />
+      {/* SECTION 2: The Arsenal Showcases */}
+      <section className="py-32 px-6 md:px-12 bg-zinc-950 border-t border-zinc-900 relative">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">The Arsenal.</h2>
+            <p className="text-zinc-500 text-lg max-w-2xl">Direct clicks to the interactive assets we deploy to stop lead leaks and scale operations.</p>
+          </div>
 
-      <footer className="w-full max-w-7xl mt-32 border-t border-zinc-900 pt-12 pb-8 flex flex-col md:flex-row items-center justify-between text-zinc-600 text-sm z-20">
-        <p>&copy; {new Date().getFullYear()} Bowen AI Strategy Group. All rights reserved.</p>
-        <div className="flex gap-6 mt-4 md:mt-0 font-mono">
-          <a href="https://www.linkedin.com/company/108901899/" target="_blank" rel="noopener noreferrer" className="hover:text-zinc-300 transition-colors">LinkedIn</a>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+            {/* Offer 2: Websites / Sales Floors */}
+            <div className="group bg-black border border-zinc-800 p-8 rounded-2xl hover:border-blue-500/50 transition-all cursor-pointer relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-6 opacity-20 group-hover:opacity-100 transition-opacity">
+                <Globe size={48} className="text-blue-500" />
+              </div>
+              <h3 className="text-2xl font-bold mb-3">Autonomous <br />Sales Floors</h3>
+              <p className="text-zinc-500 mb-8 leading-relaxed text-sm">3D interactive web properties embedded with diagnostic agents that capture leads 24/7.</p>
+              <div className="h-48 bg-zinc-900/50 rounded-xl border border-zinc-800 flex items-center justify-center overflow-hidden relative group-hover:border-blue-500/30 transition-colors">
+                <span className="text-blue-400 font-mono text-xs z-10 flex items-center gap-2 hover:underline">Launch 3D Preview <ArrowRight size={14} /></span>
+              </div>
+            </div>
+
+            {/* Offer 3: Dashboards */}
+            <div className="group bg-black border border-zinc-800 p-8 rounded-2xl hover:border-emerald-500/50 transition-all cursor-pointer relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-6 opacity-20 group-hover:opacity-100 transition-opacity">
+                <BarChart3 size={48} className="text-emerald-500" />
+              </div>
+              <h3 className="text-2xl font-bold mb-3">Central <br />Nervous System</h3>
+              <p className="text-zinc-500 mb-8 leading-relaxed text-sm">High-fidelity React dashboards replacing fragmented spreadsheets with live, actionable data.</p>
+              <div className="h-48 bg-zinc-900/50 rounded-xl border border-zinc-800 flex items-center justify-center overflow-hidden relative group-hover:border-emerald-500/30 transition-colors">
+                <span className="text-emerald-400 font-mono text-xs z-10 flex items-center gap-2 hover:underline">Open Live Sandbox <ArrowRight size={14} /></span>
+              </div>
+            </div>
+
+            {/* Offer 4: Media Engine */}
+            <div className="group bg-black border border-zinc-800 p-8 rounded-2xl hover:border-purple-500/50 transition-all cursor-pointer relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-6 opacity-20 group-hover:opacity-100 transition-opacity">
+                <PlaySquare size={48} className="text-purple-500" />
+              </div>
+              <h3 className="text-2xl font-bold mb-3">Media <br />Engine</h3>
+              <p className="text-zinc-500 mb-8 leading-relaxed text-sm">Proprietary pipeline turning 50-page technical PDFs into localized, flashy video ad creatives.</p>
+              <div className="h-48 bg-zinc-900/50 rounded-xl border border-zinc-800 flex items-center justify-center overflow-hidden relative group-hover:border-purple-500/30 transition-colors">
+                <span className="text-purple-400 font-mono text-xs z-10 flex items-center gap-2 hover:underline">Test PDF Upload <ArrowRight size={14} /></span>
+              </div>
+            </div>
+
+          </div>
         </div>
-      </footer>
+      </section>
+
+      <LeadAgent />
+
     </main>
-  )
+  );
 }
