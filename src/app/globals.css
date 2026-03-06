@@ -1,41 +1,82 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --primary: #2bcdee;
-  --background-dark: #080c0d;
+  --brand-cyan: #06b6d4;
+  --brand-purple: #8b5cf6;
+  --brand-emerald: #10b981;
 }
 
-body {
+html, body {
   font-family: 'Space Grotesk', sans-serif;
-  background-color: var(--background-dark);
+  background: #000;
   color: #f1f5f9;
-  overflow-x: hidden;
 }
 
-.glow-accent {
-  box-shadow: 0 0 20px rgba(43, 205, 238, 0.2);
-}
-
-.globe-container {
-  background: radial-gradient(circle at center, rgba(43, 205, 238, 0.15) 0%, transparent 70%);
-}
-
-.glass-card {
-  background: rgba(16, 31, 34, 0.6);
+.glass-panel {
+  background: rgba(9, 9, 11, 0.7);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(43, 205, 238, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.holographic-glow {
-  background: radial-gradient(circle at center, rgba(43, 205, 238, 0.3) 0%, rgba(43, 205, 238, 0.05) 50%, transparent 70%);
-  filter: blur(40px);
+.glass-input {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
 }
 
-.waveform-bar {
-  width: 2px;
-  background-color: #2bcdee;
-  border-radius: 99px;
-  box-shadow: 0 0 8px rgba(43, 205, 238, 0.6);
-  animation: wave-pulse 1.2s ease-in-out infinite;
+.glass-input:focus {
+  border-color: var(--brand-cyan);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.2);
+  outline: none;
 }
+
+.neon-glow-cyan {
+  text-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+}
+
+/* Animate waveform bars */
+@keyframes wave {
+  0%, 100% { height: 8px; }
+  50% { height: 24px; }
+}
+
+.wave-bar {
+  width: 4px;
+  background: var(--brand-cyan);
+  border-radius: 9999px;
+  animation: wave 1.2s ease-in-out infinite;
+}
+
+/* Orbital float */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+/* Slow spin */
+@keyframes slow-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Pulse slow */
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* Slide up */
+@keyframes slide-up {
+  from { transform: translateY(100px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #09090b; }
+::-webkit-scrollbar-thumb { background: #27272a; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #3f3f46; }
