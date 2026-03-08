@@ -1,252 +1,102 @@
 "use client";
 import { useState } from "react";
 
-const C = { cyan: '#06b6d4', purple: '#8b5cf6', emerald: '#10b981' };
+/* ── CONSTANTS ──────────────────────────────────── */
+const BG = '#080c14';
+const CYAN = '#06b6d4';
+const GLASS = { background: 'rgba(9,14,22,0.75)', backdropFilter: 'blur(14px)', WebkitBackdropFilter: 'blur(14px)', border: '1px solid rgba(255,255,255,0.08)' } as const;
 
-const glass = {
-  background: 'rgba(9,9,11,0.7)',
-  backdropFilter: 'blur(12px)',
-  WebkitBackdropFilter: 'blur(12px)',
-  border: '1px solid rgba(255,255,255,0.1)',
-} as const;
+const ALIEN = "https://lh3.googleusercontent.com/aida-public/AB6AXuAhieouVbI8W15-8GH9DAWpn-M-w5JRc8nZBzUmh8j4uEWfTW2635y_M0LzJTmQbM2jZ4LuLAVishbX6VRKkI4pOVmkJhKUPY6qHRuf09-vi3k6JVYEvzK2CWrDxXfb4FvTNYouPvy-Pb-8-3tWv9Y5m-brh-bcvQOmLFWOo3ANLbLWQgCQJ-9EvR27P8LSWhcfpOWTV2aDSnRjL3csRShhh8P5h9qGudIB_j7AD-t2K9TBEhN-I3aopMzgJoKRtXK--48YMUEk2420";
+const BRAIN = "https://lh3.googleusercontent.com/aida-public/AB6AXuAj3cAp4PzaQ6clVn4Z-CtGhFJeu6ivr05SKJXdy6nOFG0_NJyMDe68Bw1Yrh-VvwMtQ39JRqOGu2ib8G-ubmcbFs9L6cv7vecgv-GDGD8TKmBh2nTv3BY0NfJ67-KLlg2D4m0flto8MLjzeBURQ-nizgLtktQXAXOKvqyfr1LXtGl1bsrYhS8EvDJWTwipOClRohCsHlcbi2wTXfKHWXBaGiUL_QIG9ttSKA7pBzru5q6XFs_qPHkKKrjHIi8lR8-Vx06GaWLuwhOf";
+const DASHBOARD_IMG = "https://lh3.googleusercontent.com/aida-public/AB6AXuDhpa7PFHO-clngiNVPzK27GGSlJNNIHpr2P8C198PheYq2fE_QkCytVn4-yvPpb-3nY5jO7ApSpv2lJEFrDW2J3H-wkTHSyqyqx6nlGUwkjuI6KtqiZTKL7J5Zi4Z7kPs3h0BNmfzzlc4oeFFSvKUPSnZs-RWYcWUxcxB1x96FEv2P69-rwamfDXdJbsC-oDWoeW-mfesLHFJNs77Wdv6hOQwR42a52B-h9L5HOWm_SgbB53MZsInZxCWHCPwFBv8h_EHh0cdVdfBL";
+const AD1 = "https://lh3.googleusercontent.com/aida-public/AB6AXuCt-ZLRC6rA_6wnKeuF6lCHQF68B-AWYA0XEbQOtrMsM5HbTftugwz2BhDRIY1XT9pWYId1JfSZv-mUM_cn-SYYyz9rMer78BUlxpEmT6Q_Q5LrzVzECiuu-qzv5bM037FvBGxgMXMzd6ZtdCX-Hm8lwralA9ibvTNT0w1LFdUdZXEP2hgXLMFvBXI1YEhAGvONh3gvtThNamkIIC73Q5LI7LW-It5VH31VciphAFCGs0HlhC_SiIVF72WUVzSJ7VQcQBBKqLseAw8m";
+const AD2 = "https://lh3.googleusercontent.com/aida-public/AB6AXuAWNrpN54pQ88DIvUodQYMEKej38YFKM2BDXucYSbqmCn-IV4liovTBKIqUALPviBM1K8__2bDZWrGCe47rTTawGNoD7LeqtyGYc8EhquDWOBVfqtI_h2hXBfawHC_8sEuEY7dn1ZS8B_tx2QxrW2TvkV5ZEmbcrjYiVTFpEUjXJvAeHn9Qi53QZe5FnQdaeZkVhKDrsPBpd3gOghREt4xSe4LzxqZSxSUjBEE5_BIq9CYqIteGUEBZ8vjg46Af2KnH92KN6gDRVsp6";
+const ROBOT = "https://lh3.googleusercontent.com/aida-public/AB6AXuAxmGb5_qajhzZ71zoXBtesFHcGDjWaeR3Ws60X5e23xHWPjdLzJ_q7Lc5AFU5oWCt8EGsiCnModz090aiRzi6C-5sxPoLMLR747abvG86O6hhKIQdaDAMJsflbHNcz_rEFIlLLUacNuPpaMSsgFJ40YCPlG0qmQZkHbPzOi3717-bpHmIZlfM9v0haN-NrDHSv5s08XG9H4OrWGSBlMvUKK6OaDqJQpw4KgIH4z-w7RY4f5fOBRTDR8Y33ek-Y4Q9YAsxtnBq8gkpj";
 
-const glassInput: React.CSSProperties = {
-  background: 'rgba(255,255,255,0.05)',
-  border: '1px solid rgba(255,255,255,0.1)',
-  color: '#fff',
-  width: '100%',
-  padding: '12px 16px',
-  borderRadius: '8px',
-  fontFamily: 'Space Grotesk, sans-serif',
-  fontSize: '14px',
-  outline: 'none',
-  transition: 'all .3s',
-};
+function Divider() {
+  return <div style={{ width:'100%', height:1, background:'linear-gradient(90deg, transparent, rgba(6,182,212,0.25), transparent)' }} />;
+}
 
-// ── HERO ──────────────────────────────────────────────
-function HeroSection() {
+function LearnBtn() {
+  return (
+    <button style={{ marginTop:20, padding:'10px 28px', borderRadius:8, background:'rgba(6,182,212,0.1)', border:'1px solid rgba(6,182,212,0.3)', color:CYAN, fontSize:12, fontWeight:700, letterSpacing:'0.08em', textTransform:'uppercase', cursor:'pointer' }}>
+      Learn More
+    </button>
+  );
+}
+
+/* ── HERO ──────────────────────────────────────── */
+function Hero() {
   const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [sent, setSent] = useState(false);
+  const [needs, setNeeds] = useState('');
+  const SERVICES = [
+    { label: 'AI Consulting', badge: '→1', alien: true },
+    { label: 'Custom AI Powered Websites', badge: null, alien: true },
+    { label: 'Custom Dashboards', badge: null, alien: false },
+    { label: 'PDF to Video', badge: null, alien: false },
+    { label: 'Custom Photo & Video Ads', badge: null, alien: true },
+  ];
+  const [active, setActive] = useState(0);
 
   return (
-    <section style={{ position:'relative', minHeight:'100vh', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', paddingTop:80, overflow:'hidden', background:'#09090b' }}>
-      {/* Orbital bg */}
-      <div style={{ position:'absolute', inset:0, display:'flex', alignItems:'center', justifyContent:'center', pointerEvents:'none', opacity:.4, zIndex:0 }}>
-        <div style={{ position:'relative', width:600, height:600, animation:'float 6s ease-in-out infinite' }}>
-          <div style={{ position:'absolute', inset:0, borderRadius:'50%', border:`1px solid ${C.cyan}33`, animation:'slow-spin 120s linear infinite' }} />
-          <div style={{ position:'absolute', inset:40, borderRadius:'50%', border:`1px solid ${C.purple}22`, animation:'slow-spin 120s linear infinite reverse' }}>
-            <div style={{ width:'100%', height:'100%', borderRadius:'50%', background:`radial-gradient(circle, ${C.cyan}30, transparent 70%)`, animation:'pulse-slow 4s ease infinite' }} />
-          </div>
-          <div style={{ position:'absolute', inset:0, display:'flex', alignItems:'center', justifyContent:'center' }}>
-            <div style={{ width:280, height:280, borderRadius:'50%', background:`radial-gradient(circle at 40% 40%, ${C.cyan}40, ${C.purple}20, transparent)`, filter:'blur(2px)', animation:'pulse-slow 4s ease infinite' }} />
-          </div>
-        </div>
-      </div>
+    <section style={{ position:'relative', minHeight:'100vh', paddingTop:80, overflow:'hidden', background:`linear-gradient(180deg, ${BG} 0%, #0a1020 50%, ${BG} 100%)` }}>
+      {/* Background glows */}
+      <div style={{ position:'absolute', top:'10%', left:'25%', width:700, height:700, borderRadius:'50%', background:'radial-gradient(circle, rgba(6,60,180,0.15), transparent 70%)', filter:'blur(60px)', pointerEvents:'none' }} />
+      <div style={{ position:'absolute', top:'20%', left:'40%', width:500, height:500, borderRadius:'50%', background:'radial-gradient(circle, rgba(100,40,200,0.1), transparent 70%)', filter:'blur(40px)', pointerEvents:'none' }} />
 
-      {/* Content */}
-      <div style={{ position:'relative', zIndex:1, textAlign:'center', maxWidth:900, padding:'0 24px' }}>
-        <h1 style={{ fontSize:'clamp(42px, 8vw, 96px)', fontWeight:700, letterSpacing:'-0.04em', lineHeight:1, marginBottom:24, background:'linear-gradient(180deg, #fff 0%, #52525b 100%)', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent', backgroundClip:'text' }}>
-          THE FUTURE OF<br />BUSINESS INTELLIGENCE
-        </h1>
-        <p style={{ color:'#a1a1aa', fontSize:18, maxWidth:600, margin:'0 auto 48px', lineHeight:1.6 }}>
-          Leverage autonomous agents and predictive synthesis to dominate your market. Deploy intelligence at scale.
-        </p>
+      <div style={{ position:'relative', zIndex:1, maxWidth:1280, margin:'0 auto', padding:'40px 24px 60px', display:'grid', gridTemplateColumns:'300px 1fr 240px', gap:24, alignItems:'start', minHeight:'calc(100vh - 80px)' }}>
 
-        {/* Lead form */}
-        <div style={{ maxWidth:520, margin:'0 auto', ...glass, padding:32, borderRadius:16, borderColor:`${C.cyan}33` }}>
-          <p style={{ textAlign:'left', fontSize:12, fontWeight:600, textTransform:'uppercase', letterSpacing:'0.15em', color:C.cyan, marginBottom:24 }}>Initialize Your Strategy</p>
-          {sent ? (
-            <div style={{ textAlign:'center', padding:'16px 0' }}>
-              <div style={{ color:C.cyan, fontSize:32, marginBottom:8 }}>✓</div>
-              <p style={{ color:'#fff', fontWeight:700 }}>Strategy Request Received</p>
-              <p style={{ color:'#a1a1aa', fontSize:14, marginTop:4 }}>We'll deploy your briefing within 24 hours.</p>
-            </div>
-          ) : (
-            <form onSubmit={e => { e.preventDefault(); if(name && email) setSent(true); }} style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:12 }}>
-              <input style={glassInput} placeholder="Full Name" value={name} onChange={e => setName(e.target.value)} />
-              <input style={glassInput} type="email" placeholder="Work Email" value={email} onChange={e => setEmail(e.target.value)} />
-              <button type="submit" style={{ gridColumn:'1/-1', background:C.cyan, color:'#000', fontWeight:700, padding:'16px', borderRadius:8, border:'none', cursor:'pointer', fontSize:14, textTransform:'uppercase', letterSpacing:'0.05em', boxShadow:`0 0 20px ${C.cyan}40`, fontFamily:'Space Grotesk, sans-serif' }}>
-                REQUEST DEPLOYMENT
-              </button>
-            </form>
-          )}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ── REVENUE COMMAND DASHBOARD ──────────────────────────
-const TABS = ['Prospecting', 'Lead Pipeline', 'Customer Intel'] as const;
-type Tab = typeof TABS[number];
-
-const TAB_DATA = {
-  Prospecting: { accounts:'12,402', highIntent:'842', outreach:'94%', feed:[
-    { text:'[SIGNAL] TechCorp Inc. exploring Series B', time:'2s ago', green:true },
-    { text:'[ACTION] Generated personalized deck for GlobalLogistics', time:'14s ago', green:false },
-  ]},
-  'Lead Pipeline': { accounts:'3,814', highIntent:'291', outreach:'87%', feed:[
-    { text:'[SIGNAL] MedTech startup budgeting Q1 expansion', time:'5s ago', green:true },
-    { text:'[ACTION] Sequenced follow-up for RetailCo', time:'22s ago', green:false },
-  ]},
-  'Customer Intel': { accounts:'648', highIntent:'112', outreach:'99%', feed:[
-    { text:'[INSIGHT] FinCorp renewal probability: 91%', time:'1s ago', green:true },
-    { text:'[ACTION] Renewal deck sent to FinCorp VP', time:'8s ago', green:false },
-  ]},
-} satisfies Record<Tab, { accounts:string; highIntent:string; outreach:string; feed:{text:string;time:string;green:boolean}[] }>;
-
-function RevenueDashboard() {
-  const [tab, setTab] = useState<Tab>('Prospecting');
-  const d = TAB_DATA[tab];
-
-  return (
-    <div style={{ display:'flex', flexDirection:'column', gap:24 }}>
-      <div style={{ display:'flex', alignItems:'center', gap:12 }}>
-        <div style={{ width:40, height:40, borderRadius:'50%', background:`${C.cyan}1a`, display:'flex', alignItems:'center', justifyContent:'center', color:C.cyan }}>
-          <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
-        </div>
-        <h2 style={{ fontSize:28, fontWeight:700, color:'#fff', margin:0 }}>Revenue Command</h2>
-      </div>
-
-      <div style={{ ...glass, borderRadius:12, overflow:'hidden', height:500, display:'flex', flexDirection:'column', borderColor:'#27272a' }}>
-        {/* Browser bar */}
-        <div style={{ background:'#18181b', padding:'12px 16px', display:'flex', alignItems:'center', justifyContent:'space-between', borderBottom:'1px solid #27272a' }}>
-          <div style={{ display:'flex', gap:6 }}>
-            {['#ef444480','#eab30880','#22c55e80'].map(c => <div key={c} style={{ width:12, height:12, borderRadius:'50%', background:c }} />)}
-          </div>
-          <div style={{ display:'flex', background:'rgba(0,0,0,0.4)', padding:'4px 12px', borderRadius:6, gap:20 }}>
-            {TABS.map(t => (
-              <button key={t} onClick={() => setTab(t)} style={{ background:'none', border:'none', cursor:'pointer', fontSize:10, fontWeight:700, textTransform:'uppercase', letterSpacing:'0.1em', padding:0, color: t===tab ? C.cyan : '#71717a', borderBottom: t===tab ? `1px solid ${C.cyan}` : 'none', fontFamily:'Space Grotesk, sans-serif', transition:'color .2s' }}>
-                {t}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* KPI row */}
-        <div style={{ padding:24, background:'rgba(9,9,11,0.5)', flex:1, overflowY:'auto' }}>
-          <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr 1fr', gap:12, marginBottom:24 }}>
-            {[['Accounts Scanned', d.accounts, '#fff'], ['High-Intent', d.highIntent, C.cyan], ['Auto-Outreach', d.outreach, C.emerald]].map(([l,v,c]) => (
-              <div key={l as string} style={{ background:'#18181b', border:'1px solid #27272a', borderRadius:8, padding:16 }}>
-                <div style={{ fontSize:10, color:'#71717a', textTransform:'uppercase', marginBottom:4 }}>{l}</div>
-                <div style={{ fontSize:24, fontWeight:700, color:c as string }}>{v}</div>
-              </div>
-            ))}
-          </div>
-
-          {/* Bar chart */}
-          <div style={{ marginBottom:24 }}>
-            <div style={{ fontSize:11, color:'#71717a', textTransform:'uppercase', letterSpacing:'0.08em', marginBottom:12 }}>Intent Spikes by Industry</div>
-            <div style={{ display:'flex', alignItems:'flex-end', gap:6, height:100 }}>
-              {[40,60,90,50,75].map((h,i) => (
-                <div key={i} style={{ flex:1, height:`${h}%`, borderRadius:'3px 3px 0 0', background:`rgba(6,182,212,${0.2+(i*0.15)})`, transition:'height .3s' }} />
-              ))}
-            </div>
-          </div>
-
-          {/* Live feed */}
+        {/* LEFT — Branding + Form + Chat */}
+        <div style={{ display:'flex', flexDirection:'column', gap:16 }}>
           <div>
-            <div style={{ fontSize:10, color:'#71717a', textTransform:'uppercase', letterSpacing:'0.1em', marginBottom:8 }}>Live Data Feed</div>
-            {d.feed.map((f,i) => (
-              <div key={i} style={{ fontFamily:'monospace', fontSize:11, padding:'8px 10px', background:'#000', borderRadius:4, border:'1px solid #27272a', display:'flex', justifyContent:'space-between', marginBottom:4, opacity: i>0 ? 0.5 : 1 }}>
-                <span style={{ color: f.green ? C.emerald : '#d4d4d8' }}>{f.text}</span>
-                <span style={{ color:'#52525b' }}>{f.time}</span>
+            <h1 style={{ fontSize:40, fontWeight:900, lineHeight:1.05, color:'#fff', textTransform:'uppercase' }}>
+              BOWEN <span style={{ color:CYAN }}>AI</span><br/>STRATEGY<br/>GROUP
+            </h1>
+            <p style={{ color:'#94a3b8', fontSize:14, marginTop:8 }}>How can we help your business?</p>
+          </div>
+
+          {/* Form card */}
+          <div style={{ ...GLASS, borderRadius:12, padding:16 }}>
+            <p style={{ fontSize:11, fontWeight:700, color:CYAN, marginBottom:8, textTransform:'uppercase', letterSpacing:'0.1em' }}>Next Gen AI Project</p>
+            <p style={{ fontSize:11, color:'#64748b', marginBottom:12 }}>Describe your project needs</p>
+            <input style={{ width:'100%', padding:'8px 12px', borderRadius:6, background:'rgba(255,255,255,0.06)', border:'1px solid rgba(255,255,255,0.1)', color:'#fff', fontSize:13, outline:'none', marginBottom:8 }} placeholder="Name" value={name} onChange={e => setName(e.target.value)} />
+            <input style={{ width:'100%', padding:'8px 12px', borderRadius:6, background:'rgba(255,255,255,0.06)', border:'1px solid rgba(255,255,255,0.1)', color:'#fff', fontSize:13, outline:'none', marginBottom:12 }} placeholder="Project needs..." value={needs} onChange={e => setNeeds(e.target.value)} />
+            <button style={{ width:'100%', padding:'10px', borderRadius:6, background:CYAN, color:'#000', fontWeight:700, fontSize:13, border:'none', cursor:'pointer' }}>Submit</button>
+          </div>
+
+          {/* Chat messages */}
+          <div style={{ ...GLASS, borderRadius:12, padding:12 }}>
+            <div style={{ display:'flex', gap:8, alignItems:'flex-start', marginBottom:10 }}>
+              <div style={{ width:24, height:24, borderRadius:'50%', background:'rgba(6,182,212,0.2)', flexShrink:0, display:'flex', alignItems:'center', justifyContent:'center' }}>
+                <div style={{ width:8, height:8, borderRadius:'50%', background:CYAN }} />
               </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// ── SYNTHESIZED DATA HUB ────────────────────────────────
-function DataHub() {
-  return (
-    <div style={{ display:'flex', flexDirection:'column', gap:24 }}>
-      <div style={{ display:'flex', alignItems:'center', gap:12 }}>
-        <div style={{ width:40, height:40, borderRadius:'50%', background:`${C.purple}1a`, display:'flex', alignItems:'center', justifyContent:'center', color:C.purple }}>
-          <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
-        </div>
-        <h2 style={{ fontSize:28, fontWeight:700, color:'#fff', margin:0 }}>Synthesized Data Hub</h2>
-      </div>
-
-      <div style={{ ...glass, borderRadius:12, overflow:'hidden', height:500, display:'flex', flexDirection:'column', borderColor:'#27272a' }}>
-        {/* Browser bar */}
-        <div style={{ background:'#18181b', padding:'12px 16px', display:'flex', alignItems:'center', gap:8, borderBottom:'1px solid #27272a' }}>
-          <div style={{ width:8, height:8, borderRadius:'50%', background:'#3f3f46' }} />
-          <div style={{ width:160, height:8, borderRadius:4, background:'#27272a' }} />
-        </div>
-
-        {/* PDF → Video */}
-        <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:12, padding:'20px 20px 12px', borderBottom:'1px solid rgba(255,255,255,0.05)' }}>
-          {/* PDF card */}
-          <div style={{ background:'#18181b', border:'1px solid #27272a', borderRadius:8, display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', gap:8, aspectRatio:'16/9' }}>
-            <svg style={{ color:C.cyan }} width="36" height="36" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
-            <span style={{ fontSize:11, color:'#d4d4d8', fontWeight:500 }}>Annual Strategy 2024.pdf</span>
-          </div>
-          {/* Video card */}
-          <div style={{ background:'#000', border:`1px solid ${C.purple}50`, borderRadius:8, display:'flex', alignItems:'center', justifyContent:'center', aspectRatio:'16/9', position:'relative', overflow:'hidden' }}>
-            <div style={{ position:'absolute', inset:0, background:`linear-gradient(135deg, ${C.purple}20 0%, transparent 60%)` }} />
-            <div style={{ width:36, height:36, borderRadius:'50%', background:`${C.purple}cc`, display:'flex', alignItems:'center', justifyContent:'center', position:'relative' }}>
-              <div style={{ width:0, height:0, borderTop:'6px solid transparent', borderBottom:'6px solid transparent', borderLeft:'10px solid #fff', marginLeft:2 }} />
+              <p style={{ fontSize:12, color:'#cbd5e1', lineHeight:1.5 }}>We've confirmed that your AI consultation is ready. Let's explore the options.</p>
             </div>
-            <div style={{ position:'absolute', bottom:6, right:6, display:'flex', gap:3 }}>
-              {['EN','ES','ZH'].map((l,i) => <span key={l} style={{ padding:'2px 5px', background:'rgba(0,0,0,0.8)', borderRadius:3, fontSize:9, border:'1px solid rgba(255,255,255,0.2)', opacity:i>0?.4:1, color:'#fff' }}>{l}</span>)}
+            <div style={{ display:'flex', gap:8, alignItems:'flex-start' }}>
+              <img src={ALIEN} alt="" style={{ width:24, height:24, borderRadius:'50%', objectFit:'cover' }} />
+              <p style={{ fontSize:12, color:'#94a3b8', lineHeight:1.5 }}>Let me show you what we can build for your industry.</p>
             </div>
           </div>
         </div>
 
-        {/* Omnichannel */}
-        <div style={{ flex:1, padding:'16px 20px', background:'rgba(9,9,11,0.3)' }}>
-          <div style={{ fontSize:10, color:'#52525b', textTransform:'uppercase', letterSpacing:'0.12em', marginBottom:12 }}>Omnichannel Data Projections</div>
-          <div style={{ display:'flex', gap:10, height:88 }}>
-            <div style={{ width:'25%', ...glass, borderRadius:8, padding:6, display:'flex', flexDirection:'column', gap:3 }}>
-              <div style={{ width:'100%', height:3, borderRadius:9999, background:`${C.cyan}60` }} />
-              <div style={{ width:'60%', height:3, borderRadius:9999, background:'#27272a' }} />
-              <div style={{ flex:1, display:'flex', alignItems:'flex-end', gap:2, marginTop:2 }}>
-                {[60,80,40].map((h,i) => <div key={i} style={{ flex:1, height:`${h}%`, background:'#27272a', borderRadius:'2px 2px 0 0' }} />)}
-              </div>
-              <div style={{ fontSize:8, textAlign:'center', color:'#52525b' }}>Feed Engagement</div>
-            </div>
-            <div style={{ flex:1, ...glass, borderRadius:8, overflow:'hidden', display:'flex', alignItems:'center', justifyContent:'center', borderColor:`${C.cyan}30` }}>
-              <svg width="100%" height="100%" viewBox="0 0 100 40" preserveAspectRatio="none">
-                <path d="M0 30 Q 25 10 50 30 T 100 30" fill="none" stroke={C.cyan} strokeWidth="0.5" opacity="0.5" />
-                <path d="M0 30 Q 25 10 50 30 T 100 30 L 100 40 L 0 40 Z" fill={`${C.cyan}15`} />
-              </svg>
-            </div>
-            <div style={{ width:'25%', ...glass, borderRadius:8, padding:4, display:'grid', gridTemplateColumns:'1fr 1fr', gap:3 }}>
-              {[0,1,2,3].map(i => <div key={i} style={{ background:'#18181b', borderRadius:3 }} />)}
-            </div>
+        {/* CENTER — Brain / Globe */}
+        <div style={{ position:'relative', display:'flex', alignItems:'center', justifyContent:'center', minHeight:520 }}>
+          <img src={BRAIN} alt="Neural brain network" className="float" style={{ width:'100%', maxWidth:560, objectFit:'contain', filter:'drop-shadow(0 0 80px rgba(6,182,212,0.2))', zIndex:1 }} />
+          <div style={{ position:'absolute', bottom:80, left:20, zIndex:2 }}>
+            <p style={{ fontSize:56, fontWeight:900, color:'rgba(255,255,255,0.7)', lineHeight:1 }}>...possible</p>
+            <p style={{ fontSize:13, color:'#64748b', marginTop:8, maxWidth:340 }}>AI-powered neural network visualization bridging the intuition gap for modern enterprises.</p>
           </div>
+          <img src={ALIEN} alt="AI mascot" className="float" style={{ position:'absolute', bottom:40, right:30, width:100, objectFit:'contain', filter:'drop-shadow(0 0 20px rgba(0,255,100,0.3))', zIndex:2, animationDelay:'1s' }} />
         </div>
-      </div>
-    </div>
-  );
-}
 
-// ── OFFER CARDS ────────────────────────────────────────
-const CARDS = [
-  { icon:'🖥️', title:'Website Design & Automation', desc:'Generative UI systems for scale.', color:C.cyan },
-  { icon:'⚙️', title:'Custom Enterprise Dashboards', desc:'Custom LLM agents for your ops.', color:C.emerald },
-  { icon:'🎬', title:'Multilingual PDF-to-Video', desc:'AI-driven outbound automation.', color:C.purple },
-  { icon:'🎯', title:'1-1 Custom Consultations', desc:'Executive advisory for AI transition.', color:'#3b82f6' },
-];
-
-function OfferCards() {
-  return (
-    <section style={{ padding:'80px 0', background:'#000' }} id="solutions">
-      <div style={{ maxWidth:1200, margin:'0 auto', padding:'0 24px' }}>
-        <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(240px, 1fr))', gap:20 }}>
-          {CARDS.map(c => (
-            <div key={c.title} style={{ ...glass, borderRadius:12, padding:24, border:`1px solid ${c.color}40`, transition:'transform .2s, border-color .2s', cursor:'pointer' }}
-              onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.transform='scale(1.03)'; (e.currentTarget as HTMLDivElement).style.borderColor=`${c.color}80`; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.transform='scale(1)'; (e.currentTarget as HTMLDivElement).style.borderColor=`${c.color}40`; }}>
-              <div style={{ fontSize:32, marginBottom:16 }}>{c.icon}</div>
-              <h3 style={{ color:'#fff', fontWeight:700, fontSize:16, marginBottom:8, margin:'0 0 8px' }}>{c.title}</h3>
-              <p style={{ color:'#71717a', fontSize:14, margin:0 }}>{c.desc}</p>
-            </div>
+        {/* RIGHT — Service Menu */}
+        <div style={{ display:'flex', flexDirection:'column', gap:8, paddingTop:20 }}>
+          {SERVICES.map((s, i) => (
+            <button key={i} onClick={() => setActive(i)} style={{ display:'flex', alignItems:'center', gap:10, textAlign:'left', width:'100%', padding:'10px 14px', borderRadius:10, cursor:'pointer', border: i === active ? '1px solid rgba(6,182,212,0.4)' : '1px solid rgba(255,255,255,0.06)', background: i === active ? 'rgba(6,182,212,0.1)' : 'rgba(255,255,255,0.03)', color: i === active ? CYAN : '#94a3b8', fontSize:13, fontWeight:500, transition:'all .2s' }}>
+              {s.alien && <img src={ALIEN} alt="" style={{ width:28, height:28, objectFit:'contain', borderRadius:'50%' }} />}
+              <span style={{ flex:1 }}>{s.label}</span>
+              {s.badge && <span style={{ fontSize:11, fontWeight:700, color:CYAN }}>{s.badge}</span>}
+            </button>
           ))}
         </div>
       </div>
@@ -254,106 +104,203 @@ function OfferCards() {
   );
 }
 
-// ── ROBOT AGENT ────────────────────────────────────────
-function RobotAgent() {
-  const [open, setOpen] = useState(true);
+/* ── SERVICE ROW COMPONENT ───────────────────────── */
+function ServiceRow({ id, title, desc, sub, children }: { id?: string; title: string; desc: string; sub?: string; children: React.ReactNode }) {
   return (
-    <aside style={{ position:'fixed', bottom:0, right:32, zIndex:100, animation:'slide-up 0.6s ease 0.5s both' }}>
-      <div style={{ display:'flex', flexDirection:'column', alignItems:'flex-end', gap:16, paddingBottom:16 }}>
-        {open && (
-          <div style={{ width:300, ...glass, borderRadius:16, padding:20, boxShadow:'0 25px 50px rgba(0,0,0,0.5)', borderColor:`${C.cyan}40`, animation:'float 6s ease-in-out infinite' }}>
-            <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:16 }}>
-              <div style={{ display:'flex', alignItems:'center', gap:8 }}>
-                <div style={{ width:8, height:8, borderRadius:'50%', background:C.cyan, boxShadow:`0 0 8px ${C.cyan}` }} />
-                <span style={{ fontSize:10, fontWeight:700, color:C.cyan, textTransform:'uppercase', letterSpacing:'0.15em' }}>Live</span>
-              </div>
-              <button onClick={() => setOpen(false)} style={{ background:'none', border:'none', cursor:'pointer', color:'#71717a', padding:0, lineHeight:1 }}>✕</button>
-            </div>
-            <p style={{ fontSize:14, color:'#d4d4d8', marginBottom:24, lineHeight:1.6 }}>How can I assist you with our custom solutions today?</p>
-            {/* Waveform */}
-            <div style={{ display:'flex', alignItems:'center', justifyContent:'center', gap:4, height:36, marginBottom:20 }}>
-              {[0.1,0.3,0.2,0.5,0.4,0.6,0.15,0.35].map((delay, i) => (
-                <div key={i} className="wave-bar" style={{ animationDelay:`${delay}s` }} />
-              ))}
-            </div>
-            <div style={{ display:'flex', flexDirection:'column', gap:8 }}>
-              {['View Solutions','Book Call'].map(label => (
-                <button key={label} style={{ width:'100%', textAlign:'left', padding:'8px 16px', borderRadius:8, background:'#18181b', border:'1px solid #27272a', color:'#d4d4d8', fontSize:12, fontWeight:500, cursor:'pointer', fontFamily:'Space Grotesk, sans-serif', transition:'border-color .2s' }}
-                  onMouseEnter={e => (e.currentTarget.style.borderColor=C.cyan)}
-                  onMouseLeave={e => (e.currentTarget.style.borderColor='#27272a')}>
-                  {label}
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
-        {/* Robot anchor */}
-        <div onClick={() => setOpen(o => !o)} style={{ width:88, height:88, borderRadius:'50% 50% 0 0', background:'linear-gradient(to top, #27272a, transparent)', display:'flex', alignItems:'center', justifyContent:'center', borderTop:`2px solid ${C.cyan}60`, cursor:'pointer' }}>
-          <div style={{ width:58, height:58, borderRadius:'50%', background:`radial-gradient(circle at 40% 35%, ${C.cyan}40, ${C.purple}20, transparent)`, display:'flex', alignItems:'center', justifyContent:'center', boxShadow:`0 0 20px ${C.cyan}40` }}>
-            <svg width="28" height="28" fill="none" stroke={C.cyan} strokeWidth="1.5" viewBox="0 0 24 24">
-              <rect x="3" y="8" width="18" height="12" rx="2"/>
-              <path d="M8 8V6a4 4 0 0 1 8 0v2"/>
-              <circle cx="9" cy="14" r="1.5" fill={C.cyan}/>
-              <circle cx="15" cy="14" r="1.5" fill={C.cyan}/>
-            </svg>
-          </div>
+    <section id={id} style={{ padding:'60px 24px', maxWidth:1280, margin:'0 auto' }}>
+      <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:48, alignItems:'center' }}>
+        <div>
+          <h2 style={{ fontSize:32, fontWeight:900, color:'#fff', marginBottom:12, fontStyle:'italic' }}>{title}</h2>
+          <p style={{ color:'#94a3b8', lineHeight:1.7, marginBottom:4 }}>{desc}</p>
+          {sub && <p style={{ color:'#64748b', fontSize:13, marginTop:4 }}>{sub}</p>}
+          <LearnBtn />
         </div>
+        <div style={{ position:'relative' }}>{children}</div>
       </div>
-    </aside>
+    </section>
   );
 }
 
-// ── PAGE ───────────────────────────────────────────────
+/* ── SHOWCASE: 3D Digital ─────────────────────────── */
+function DigitalShowcase() {
+  const niches = [
+    { label:'Food', img:'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=300&q=80' },
+    { label:'Roofing', img:'https://images.unsplash.com/photo-1632759145351-1d592919f522?w=300&q=80' },
+    { label:'Real Estate', img:'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=300&q=80' },
+  ];
+  return (
+    <ServiceRow title="3D Digital Showcase" desc="Interactive Immersive 3D scene cards that showcase what Bowen AI builds for niche verticals — Food, Roofing, Real Estate, and more." sub="Hover elements rotate and interact in real-time.">
+      <div style={{ display:'flex', gap:12, alignItems:'flex-end' }}>
+        {niches.map(n => (
+          <div key={n.label} style={{ flex:1, borderRadius:12, overflow:'hidden', border:'1px solid rgba(255,255,255,0.1)', background:BG }}>
+            <img src={n.img} alt={n.label} style={{ width:'100%', height:120, objectFit:'cover' }} />
+            <div style={{ padding:'10px 12px', textAlign:'center' }}>
+              <p style={{ fontSize:13, fontWeight:700, color:'#fff' }}>{n.label}</p>
+            </div>
+            {/* Holographic base */}
+            <div style={{ height:4, background:`linear-gradient(90deg, transparent, ${CYAN}40, transparent)` }} />
+          </div>
+        ))}
+        <img src={ALIEN} alt="mascot" className="float" style={{ width:80, objectFit:'contain', flexShrink:0, filter:'drop-shadow(0 0 16px rgba(0,255,100,0.25))' }} />
+      </div>
+    </ServiceRow>
+  );
+}
+
+/* ── SHOWCASE: Neural Analytics ───────────────────── */
+function NeuralAnalytics() {
+  return (
+    <ServiceRow title="Neural Analytics" desc="Interactive real-time 3D Neural Analytics, Sales Metrics, and track real-time data, and real-time data flow." sub="Integrates with 200+ data sources.">
+      <div style={{ display:'flex', gap:16, alignItems:'flex-end' }}>
+        <div style={{ flex:1, ...GLASS, borderRadius:16, padding:20, overflow:'hidden' }}>
+          {/* Bar chart */}
+          <div style={{ display:'flex', alignItems:'flex-end', gap:8, height:120, marginBottom:16 }}>
+            {[50, 80, 40, 95, 65, 55, 85, 45].map((h, i) => (
+              <div key={i} style={{ flex:1, height:`${h}%`, borderRadius:'4px 4px 0 0', background:`linear-gradient(180deg, ${CYAN} 0%, rgba(6,182,212,0.2) 100%)`, opacity: 0.4 + (i * 0.08) }} />
+            ))}
+          </div>
+          {/* Mini waveform row */}
+          <div style={{ display:'flex', gap:2, height:20, marginBottom:16 }}>
+            {[30, 60, 45, 80, 50, 70, 35, 65, 40, 55, 75, 45].map((h, i) => (
+              <div key={i} style={{ flex:1, height:`${h}%`, borderRadius:2, background:`rgba(234,179,8,${0.3 + (i * 0.05)})` }} />
+            ))}
+          </div>
+          {/* World map placeholder */}
+          <div style={{ height:50, borderRadius:8, border:'1px solid rgba(255,255,255,0.05)', background:'rgba(6,182,212,0.03)', display:'flex', alignItems:'center', justifyContent:'center' }}>
+            <span style={{ fontSize:10, color:'#475569', fontFamily:'monospace' }}>[ GLOBAL DATA NODES ]</span>
+          </div>
+        </div>
+        <img src={ALIEN} alt="mascot" className="float" style={{ width:90, objectFit:'contain', flexShrink:0, filter:'drop-shadow(0 0 16px rgba(0,255,100,0.25))', animationDelay:'0.5s' }} />
+      </div>
+    </ServiceRow>
+  );
+}
+
+/* ── SHOWCASE: Polyglot PDF ──────────────────────── */
+function PolyglotPDF() {
+  return (
+    <ServiceRow title="Polyglot PDF" desc="Get real-time contract analysis with multi-lingual legal, contract, video, captions, ROC, and marketing content summarizations." sub="">
+      <div style={{ display:'flex', gap:12, alignItems:'stretch' }}>
+        {/* Contract doc */}
+        <div style={{ width:160, ...GLASS, borderRadius:12, padding:16, flexShrink:0 }}>
+          <p style={{ fontSize:10, fontWeight:700, color:'#64748b', textTransform:'uppercase', marginBottom:12 }}>Contract.pdf</p>
+          {[100,75,100,60,90,70,100,50].map((w, i) => (
+            <div key={i} style={{ width:`${w}%`, height:3, borderRadius:99, background:'rgba(255,255,255,0.1)', marginBottom:5 }} />
+          ))}
+          <div style={{ marginTop:12, height:36, borderRadius:4, background:'rgba(6,182,212,0.05)', border:'1px solid rgba(255,255,255,0.05)' }} />
+        </div>
+
+        <div style={{ display:'flex', alignItems:'center', color:'#475569', fontSize:20, flexShrink:0 }}>→</div>
+
+        {/* Video + languages */}
+        <div style={{ flex:1, display:'flex', flexDirection:'column', gap:8 }}>
+          <div style={{ position:'relative', borderRadius:12, overflow:'hidden', border:'1px solid rgba(255,255,255,0.1)', background:'#0a0f1a' }}>
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80" alt="Video" style={{ width:'100%', height:140, objectFit:'cover', opacity:0.5 }} />
+            <div style={{ position:'absolute', inset:0, display:'flex', alignItems:'center', justifyContent:'center' }}>
+              <div style={{ width:40, height:40, borderRadius:'50%', background:`${CYAN}cc`, display:'flex', alignItems:'center', justifyContent:'center' }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </div>
+            </div>
+          </div>
+          <div style={{ display:'flex', gap:6 }}>
+            {['English','Spanish','Mandarin'].map((l, i) => (
+              <button key={l} style={{ flex:1, padding:'6px 0', borderRadius:6, fontSize:10, fontWeight:700, cursor:'pointer', border: i===0 ? `1px solid ${CYAN}60` : '1px solid rgba(255,255,255,0.06)', background: i===0 ? 'rgba(6,182,212,0.15)' : 'rgba(255,255,255,0.03)', color: i===0 ? CYAN : '#64748b' }}>{l}</button>
+            ))}
+          </div>
+        </div>
+
+        <img src={ALIEN} alt="" className="float" style={{ width:70, objectFit:'contain', flexShrink:0, alignSelf:'flex-end', filter:'drop-shadow(0 0 16px rgba(0,255,100,0.2))', animationDelay:'0.8s' }} />
+      </div>
+    </ServiceRow>
+  );
+}
+
+/* ── SHOWCASE: Cinematic Ad Lab ──────────────────── */
+function CinematicAdLab() {
+  return (
+    <ServiceRow title="Cinematic Ad Lab" desc="Hyper-realistic mock-up gallery featuring luxury, automotive, culinary, real estate, and premium brand tradeshow imagery." sub="Custom photo & video ad production at scale.">
+      <div style={{ display:'flex', gap:12, alignItems:'flex-end' }}>
+        <div style={{ flex:1, display:'grid', gridTemplateColumns:'1fr 1fr 1fr', gap:8 }}>
+          {[AD1, AD2, 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=300&q=80'].map((img, i) => (
+            <div key={i} style={{ borderRadius:10, overflow:'hidden', border:'1px solid rgba(255,255,255,0.08)', position:'relative', cursor:'pointer' }}>
+              <img src={img} alt="Ad" style={{ width:'100%', height:120, objectFit:'cover' }} />
+            </div>
+          ))}
+        </div>
+        <img src={ALIEN} alt="mascot" className="float" style={{ width:80, objectFit:'contain', flexShrink:0, filter:'drop-shadow(0 0 16px rgba(0,255,100,0.25))', animationDelay:'1.2s' }} />
+      </div>
+    </ServiceRow>
+  );
+}
+
+/* ── FLOATING ROBOT AGENT ───────────────────────── */
+function RobotAgent() {
+  const [open, setOpen] = useState(false);
+  return (
+    <div style={{ position:'fixed', bottom:24, right:24, zIndex:100 }}>
+      {open && (
+        <div style={{ position:'absolute', bottom:80, right:0, width:280, ...GLASS, borderRadius:16, padding:16, marginBottom:8, boxShadow:'0 20px 60px rgba(0,0,0,0.6)' }}>
+          <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:12 }}>
+            <div style={{ display:'flex', alignItems:'center', gap:6 }}>
+              <div style={{ width:6, height:6, borderRadius:'50%', background:'#22c55e' }} />
+              <span style={{ fontSize:10, fontWeight:700, color:CYAN, textTransform:'uppercase', letterSpacing:'0.12em' }}>Agent Online</span>
+            </div>
+            <button onClick={() => setOpen(false)} style={{ background:'none', border:'none', color:'#64748b', cursor:'pointer', fontSize:14 }}>✕</button>
+          </div>
+          <p style={{ fontSize:13, color:'#cbd5e1', marginBottom:16, lineHeight:1.5 }}>How can I help you navigate the World Node today?</p>
+          <div style={{ display:'flex', gap:3, height:24, marginBottom:16, alignItems:'flex-end' }}>
+            {[20,60,100,50,30].map((h, i) => (
+              <div key={i} className="wave-bar" style={{ flex:1, height:`${h}%` }} />
+            ))}
+          </div>
+          <button style={{ width:'100%', padding:'8px', borderRadius:8, background:CYAN, color:'#000', fontSize:11, fontWeight:700, border:'none', cursor:'pointer', textTransform:'uppercase', letterSpacing:'0.08em' }}>Start Voice Chat</button>
+        </div>
+      )}
+      <div onClick={() => setOpen(o => !o)} style={{ width:64, height:64, borderRadius:'50%', border:`2px solid ${CYAN}`, overflow:'hidden', cursor:'pointer', boxShadow:`0 0 30px rgba(6,182,212,0.3)`, position:'relative', background:BG }}>
+        <img src={ROBOT} alt="AI agent" style={{ width:'100%', height:'100%', objectFit:'cover' }} />
+        <div style={{ position:'absolute', top:2, right:2, width:10, height:10, borderRadius:'50%', background:'#22c55e', border:'2px solid #000' }} />
+      </div>
+    </div>
+  );
+}
+
+/* ── PAGE ───────────────────────────────────────── */
 export default function Home() {
   return (
-    <div style={{ minHeight:'100vh', background:'#000', color:'#f1f5f9', fontFamily:'Space Grotesk, sans-serif' }}>
+    <div style={{ minHeight:'100vh', background:BG, color:'#f1f5f9', fontFamily:"'Space Grotesk', sans-serif" }}>
       {/* NAV */}
-      <nav style={{ position:'fixed', top:0, width:'100%', zIndex:50, padding:'16px 24px', display:'flex', justifyContent:'space-between', alignItems:'center', ...glass, borderRadius:0, borderTop:'none', borderLeft:'none', borderRight:'none', borderBottom:'1px solid rgba(255,255,255,0.08)' }}>
-        <div style={{ display:'flex', alignItems:'center', gap:10 }}>
-          <div style={{ width:32, height:32, borderRadius:8, background:`linear-gradient(135deg, ${C.cyan}, ${C.purple})`, display:'flex', alignItems:'center', justifyContent:'center', color:'#000', fontWeight:700, fontSize:14 }}>B</div>
-          <span style={{ fontSize:18, fontWeight:700, letterSpacing:'-0.02em' }}>BOWEN <span style={{ color:C.cyan }}>AI</span></span>
+      <nav style={{ position:'fixed', top:0, width:'100%', zIndex:50, ...GLASS, borderRadius:0, borderTop:'none', borderLeft:'none', borderRight:'none' }}>
+        <div style={{ maxWidth:1280, margin:'0 auto', padding:'0 24px', height:64, display:'flex', alignItems:'center', justifyContent:'space-between' }}>
+          <span style={{ fontSize:18, fontWeight:900, letterSpacing:'-0.02em' }}>BOWEN <span style={{ color:CYAN }}>AI</span></span>
+          <div style={{ display:'flex', gap:28, fontSize:11, fontWeight:700, textTransform:'uppercase', letterSpacing:'0.12em', color:'#94a3b8' }}>
+            <a href="#specifications" style={{ transition:'color .2s' }}>Specifications</a>
+            <a href="#architecture" style={{ transition:'color .2s' }}>Architecture</a>
+            <a href="#security" style={{ transition:'color .2s' }}>Security</a>
+          </div>
+          <button style={{ padding:'8px 20px', borderRadius:8, background:CYAN, color:'#000', fontSize:12, fontWeight:700, border:'none', cursor:'pointer', textTransform:'uppercase', letterSpacing:'0.06em' }}>Pre-Order</button>
         </div>
-        <div style={{ display:'flex', gap:32, fontSize:13, fontWeight:500, color:'#a1a1aa' }}>
-          {['Solutions','Workflow','Strategy','About'].map(item => (
-            <a key={item} href={`#${item.toLowerCase()}`} style={{ color:'#a1a1aa', textDecoration:'none', transition:'color .2s' }}
-              onMouseEnter={e => (e.currentTarget.style.color=C.cyan)}
-              onMouseLeave={e => (e.currentTarget.style.color='#a1a1aa')}>{item}</a>
-          ))}
-        </div>
-        <button style={{ padding:'8px 20px', background:'#f4f4f5', color:'#000', fontSize:13, fontWeight:700, borderRadius:9999, border:'none', cursor:'pointer', fontFamily:'Space Grotesk, sans-serif', transition:'background .2s' }}
-          onMouseEnter={e => (e.currentTarget.style.background=C.cyan)}
-          onMouseLeave={e => (e.currentTarget.style.background='#f4f4f5')}>
-          Get Started
-        </button>
       </nav>
 
-      {/* HERO */}
-      <HeroSection />
-
-      {/* SHOWCASE */}
-      <section style={{ padding:'80px 0', background:'#000' }} id="workflow">
-        <div style={{ maxWidth:1200, margin:'0 auto', padding:'0 24px', display:'grid', gridTemplateColumns:'1fr 1fr', gap:40 }}>
-          <RevenueDashboard />
-          <DataHub />
-        </div>
-      </section>
-
-      {/* CARDS */}
-      <OfferCards />
+      <Hero />
+      <Divider />
+      <DigitalShowcase />
+      <Divider />
+      <NeuralAnalytics />
+      <Divider />
+      <PolyglotPDF />
+      <Divider />
+      <CinematicAdLab />
+      <Divider />
 
       {/* FOOTER */}
-      <footer style={{ padding:'40px 24px', background:'#09090b', borderTop:'1px solid #18181b' }}>
-        <div style={{ maxWidth:1200, margin:'0 auto', display:'flex', justifyContent:'space-between', alignItems:'center', flexWrap:'wrap', gap:16 }}>
+      <footer style={{ padding:'40px 24px', borderTop:'1px solid rgba(255,255,255,0.05)' }}>
+        <div style={{ maxWidth:1280, margin:'0 auto', display:'flex', justifyContent:'space-between', alignItems:'center', flexWrap:'wrap', gap:16 }}>
           <div style={{ display:'flex', alignItems:'center', gap:8 }}>
-            <div style={{ width:24, height:24, borderRadius:4, background:C.cyan, display:'flex', alignItems:'center', justifyContent:'center', color:'#000', fontWeight:700, fontSize:11 }}>B</div>
-            <span style={{ fontSize:12, fontWeight:700, letterSpacing:'0.15em', color:'#52525b' }}>© 2025 BOWEN AI STRATEGY GROUP</span>
+            <span style={{ fontSize:14, fontWeight:900 }}>BOWEN <span style={{ color:CYAN }}>AI</span></span>
+            <span style={{ fontSize:11, color:'#475569' }}>© 2026 Bowen AI Strategy Group</span>
           </div>
-          <div style={{ display:'flex', gap:24, fontSize:11, fontWeight:600, textTransform:'uppercase', letterSpacing:'0.1em' }}>
-            {['Privacy','Terms','API','Status'].map(l => (
-              <a key={l} href="#" style={{ color:'#52525b', textDecoration:'none' }}
-                onMouseEnter={e => (e.currentTarget.style.color='#fff')}
-                onMouseLeave={e => (e.currentTarget.style.color='#52525b')}>{l}</a>
-            ))}
+          <div style={{ display:'flex', gap:20, fontSize:11, fontWeight:600, textTransform:'uppercase', letterSpacing:'0.1em', color:'#475569' }}>
+            {['Privacy','Terms','Contact'].map(l => <a key={l} href="#">{l}</a>)}
           </div>
         </div>
       </footer>
