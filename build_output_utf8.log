@@ -1,0 +1,71 @@
+﻿
+> bowen-ai-strategy-group@0.1.0 build
+> next build
+
+Γû▓ Next.js 16.1.6 (Turbopack)
+
+  Creating an optimized production build ...
+node.exe : 
+At line:1 char:1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\nodejs/node_modules
+/npm/bin/ ...
++ ~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~
+    + CategoryInfo     
+         : NotSpecifi  
+  ed: (:String) [],    
+ RemoteException
+    + FullyQualifiedEr 
+   rorId : NativeComm  
+  andError
+ 
+> Build error occurred
+Error: Turbopack build 
+failed with 1 errors:
+./src/components/sectio
+ns/FloatingAIAgent.tsx:
+138:11
+Parsing ecmascript 
+source code failed
+[0m [90m 136 |[39m  
+               [33m<[
+39m[33m/[39m[33mdiv
+[39m[33m>[39m
+ [90m 137 |[39m      
+       [33m<[39m[33m
+/[39m[33mdiv[39m[33
+m>[39m
+[31m[1m>[22m[39m[9
+0m 138 |[39m         
+[33m<[39m[33m/[39m[
+33mdiv[39m[33m>[39m
+ [90m     |[39m      
+     [31m[1m^[22m[3
+9m[31m[1m^[22m[39m
+[31m[1m^[22m[39m
+ [90m 139 |[39m     
+)[33m;[39m
+ [90m 140 |[39m }
+ [90m 141 |[39m[0m
+
+Expected corresponding 
+JSX closing tag for 
+<aside>
+
+Import trace:
+  Server Component:
+    ./src/components/se
+ctions/FloatingAIAgent.
+tsx
+    ./src/app/page.tsx
+
+
+    at <unknown> (./src
+/components/sections/Fl
+oatingAIAgent.tsx:138:1
+1)
+
