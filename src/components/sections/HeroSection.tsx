@@ -1,82 +1,110 @@
 "use client";
 
 import React, { useState } from 'react';
-import Spline from '@splinetool/react-spline';
 
 export default function HeroSection() {
     const [email, setEmail] = useState('');
-    const [fullName, setFullName] = useState('');
+    const [projectNeeds, setProjectNeeds] = useState('');
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        console.log("Deployment Requested:", { fullName, email });
-        // In future: wire to API route / webhook
+        console.log("Consult AI Requested:", { email, projectNeeds });
     };
 
     return (
-        <main className="relative min-h-screen flex flex-col items-center justify-center pt-20 overflow-hidden bg-zinc-950">
-            {/* Orbital Hub Graphics */}
-            <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none opacity-40">
-                <div className="relative w-[600px] h-[600px] animate-float">
-                    {/* Main Sphere */}
-                    <div className="absolute inset-0 rounded-full border border-brand-cyan/20 animate-slow-spin"></div>
+        <section className="relative min-h-screen pt-32 pb-20 px-6 flex flex-col items-center justify-center overflow-hidden">
+            {/* Radial glow background */}
+            <div className="absolute inset-0 world-node-glow -z-10"></div>
 
-                    <div className="absolute inset-10 rounded-full border border-brand-purple/10 animate-slow-spin flex items-center justify-center" style={{ animationDirection: 'reverse' }}>
-                        <div className="w-96 h-96 rounded-full bg-gradient-to-tr from-brand-cyan/20 via-transparent to-brand-purple/20 blur-3xl animate-pulse-slow"></div>
-                    </div>
+            {/* Globe Visual */}
+            <div className="relative w-full max-w-4xl aspect-square mb-12 flex items-center justify-center">
+                {/* Pulsing orbit rings */}
+                <div className="absolute w-[80%] aspect-square rounded-full border border-brand-cyan/20 animate-pulse"></div>
+                <div className="absolute w-[95%] aspect-square rounded-full border border-white/5"></div>
 
-                    {/* Centerpiece (The Globe - Spline Integration) */}
-                    <div className="absolute inset-0 flex items-center justify-center scale-75 opacity-80 z-10">
-                        <Spline scene="https://prod.spline.design/h6x-7t-O0pIeI1XU/scene.splinecode" />
+                {/* Main globe */}
+                <div className="relative w-3/4 aspect-square rounded-full overflow-hidden bg-background-dark border border-brand-cyan/40 shadow-[0_0_100px_rgba(43,205,238,0.1)] group" style={{ backgroundColor: '#101f22' }}>
+                    <img
+                        alt="Detailed 3D holographic digital world globe with neural network connections"
+                        className="w-full h-full object-cover opacity-60 mix-blend-screen scale-110 hover:scale-100 transition-transform duration-[10s]"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAj3cAp4PzaQ6clVn4Z-CtGhFJeu6ivr05SKJXdy6nOFG0_NJyMDe68Bw1Yrh-VvwMtQ39JRqOGu2ib8G-ubmcbFs9L6cv7vecgv-GDGD8TKmBh2nTv3BY0NfJ67-KLlg2D4m0flto8MLjzeBURQ-nizgLtktQXAXOKvqyfr1LXtGl1bsrYhS8EvDJWTwipOClRohCsHlcbi2wTXfKHWXBaGiUL_QIG9ttSKA7pBzru5q6XFs_qPHkKKrjHIi8lR8-Vx06GaWLuwhOf"
+                    />
+
+                    {/* Robot Entrance Point */}
+                    <div className="absolute top-1/2 left-[10%] -translate-y-1/2 w-24 h-40 bg-brand-cyan/20 backdrop-blur-md border-r border-brand-cyan/50 rounded-r-2xl flex items-center justify-center group-hover:left-0 transition-all duration-700">
+                        <div className="w-16 h-16 bg-green-500/80 rounded-full blur-xl animate-pulse"></div>
+                        <img
+                            alt="Small green futuristic robot agent stepping out of a digital portal"
+                            className="absolute size-16 object-contain"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhieouVbI8W15-8GH9DAWpn-M-w5JRc8nZBzUmh8j4uEWfTW2635y_M0LzJTmQbM2jZ4LuLAVishbX6VRKkI4pOVmkJhKUPY6qHRuf09-vi3k6JVYEvzK2CWrDxXfb4FvTNYouPvy-Pb-8-3tWv9Y5m-brh-bcvQOmLFWOo3ANLbLWQgCQJ-9EvR27P8LSWhcfpOWTV2aDSnRjL3csRShhh8P5h9qGudIB_j7AD-t2K9TBEhN-I3aopMzgJoKRtXK--48YMUEk2420"
+                        />
                     </div>
+                </div>
+
+                {/* Floating status label */}
+                <div className="absolute top-[20%] right-0 glass-panel p-4 rounded-xl border-l-2 border-l-brand-cyan max-w-[200px]">
+                    <p className="text-[10px] text-brand-cyan font-bold uppercase tracking-widest mb-1">Status</p>
+                    <p className="text-xs text-white">Neural Nodes: Synchronized</p>
                 </div>
             </div>
 
-            <div className="container mx-auto px-6 z-10 text-center relative mt-12">
-                <h1 className="text-5xl md:text-8xl font-bold tracking-tighter mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white to-zinc-500">
-                    THE FUTURE OF <br /> BUSINESS INTELLIGENCE
+            {/* Hero Text + CTA */}
+            <div className="text-center max-w-4xl relative z-10">
+                <h2 className="text-brand-cyan font-bold tracking-[0.4em] uppercase text-sm mb-4">
+                    Bowen AI Strategy Group
+                </h2>
+                <h1 className="text-5xl md:text-8xl font-bold text-white mb-8 tracking-tighter italic">
+                    The World Node <span className="text-brand-cyan neon-text">Interface</span>
                 </h1>
-
-                <p className="text-zinc-400 text-lg md:text-xl max-w-2xl mx-auto mb-12">
-                    Leverage autonomous agents and predictive synthesis to dominate your market. Deploy intelligence at scale.
+                <p className="text-xl text-slate-400 mb-12 max-w-2xl mx-auto font-light">
+                    How can we help your business? Navigate the global digital landscape with integrated LLM intelligence.
                 </p>
 
-                {/* Lead Capture Form */}
-                <div className="max-w-xl mx-auto glass-panel p-8 rounded-2xl border-brand-cyan/20 shadow-2xl relative z-20">
-                    <h3 className="text-left text-sm font-semibold uppercase tracking-widest text-brand-cyan mb-6">Initialize Your Strategy</h3>
-
-                    <form className="grid grid-cols-1 md:grid-cols-2 gap-4" onSubmit={handleSubmit}>
-                        <div className="col-span-1">
+                {/* Holographic Lead Capture & Chat Interface */}
+                <div className="glass-panel p-2 rounded-2xl max-w-3xl mx-auto border border-white/10 shadow-2xl">
+                    <form onSubmit={handleSubmit} className="flex flex-col md:flex-row gap-2">
+                        <div className="flex-1 flex items-center rounded-xl px-4 py-3 border border-white/5" style={{ backgroundColor: 'rgba(16,31,34,0.8)' }}>
+                            <span className="material-symbols-outlined text-slate-500 mr-3" style={{ fontSize: '20px' }}>mail</span>
                             <input
-                                type="text"
-                                placeholder="Full Name"
-                                className="w-full glass-input rounded-lg px-4 py-3 text-white placeholder-zinc-500 focus:outline-none"
-                                value={fullName}
-                                onChange={(e) => setFullName(e.target.value)}
-                                required
-                            />
-                        </div>
-                        <div className="col-span-1">
-                            <input
+                                className="bg-transparent border-none outline-none text-white placeholder-slate-600 w-full text-sm"
+                                placeholder="Enter your business email"
                                 type="email"
-                                placeholder="Work Email"
-                                className="w-full glass-input rounded-lg px-4 py-3 text-white placeholder-zinc-500 focus:outline-none"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                required
                             />
                         </div>
-                        <div className="col-span-1 md:col-span-2 mt-2">
-                            <button
-                                type="submit"
-                                className="w-full bg-brand-cyan hover:bg-cyan-500 text-black font-bold py-4 rounded-lg transition-all shadow-[0_0_20px_rgba(6,182,212,0.4)] hover:shadow-[0_0_30px_rgba(6,182,212,0.6)]"
-                            >
-                                REQUEST DEPLOYMENT
-                            </button>
+                        <div className="flex-1 flex items-center rounded-xl px-4 py-3 border border-white/5" style={{ backgroundColor: 'rgba(16,31,34,0.8)' }}>
+                            <span className="material-symbols-outlined text-slate-500 mr-3" style={{ fontSize: '20px' }}>psychology</span>
+                            <input
+                                className="bg-transparent border-none outline-none text-white placeholder-slate-600 w-full text-sm"
+                                placeholder="Describe your project needs..."
+                                type="text"
+                                value={projectNeeds}
+                                onChange={(e) => setProjectNeeds(e.target.value)}
+                            />
                         </div>
+                        <button
+                            type="submit"
+                            className="bg-brand-cyan hover:bg-brand-cyan/80 font-bold px-8 py-3 rounded-xl transition-all flex items-center justify-center gap-2"
+                            style={{ color: '#101f22' }}
+                        >
+                            <span>CONSULT AI</span>
+                            <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>bolt</span>
+                        </button>
                     </form>
+
+                    {/* Quick AI Interaction Bar */}
+                    <div className="mt-4 flex items-center gap-3 px-2 pb-2">
+                        <div className="size-6 rounded-full bg-brand-cyan/20 flex items-center justify-center">
+                            <div className="size-2 bg-brand-cyan rounded-full animate-ping"></div>
+                        </div>
+                        <p className="text-xs text-slate-500">
+                            Integrated LLM is ready. Try:{' '}
+                            <span className="text-brand-cyan cursor-pointer hover:underline">&quot;Analyze my market vertical&quot;</span>
+                        </p>
+                    </div>
                 </div>
             </div>
-        </main>
+        </section>
     );
 }
