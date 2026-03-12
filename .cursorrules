@@ -1,0 +1,19 @@
+# Bowen AI Strategy Group — Agent Rules
+# These rules apply to all AI agents working in this repository.
+
+## AUTONOMY
+- Always proceed with terminal commands and file creations without pausing.
+- Assume `-y` for all package installations.
+- If a command fails, read the error, debug, and retry autonomously.
+- Never ask for human review mid-task. Execute, then report.
+
+## ARCHITECTURE
+- Stack: Next.js (App Router) + Tailwind CSS + Framer Motion + Lucide React
+- Design System: Space Grotesk font, `bg-[#080c0d]` dark background, `#2bcdee` primary cyan
+- 3D: @splinetool/react-spline for interactive scenes
+
+## DEPLOYMENT PROTOCOL
+- Never push directly to `main`. Always use feature branches + PR.
+- Merge via GitHub MCP. Vercel auto-deploys on merge.
+- `bowenaistrategygroup.com` = always live current version.
+- `localhost:3000` = private sandbox for testing.

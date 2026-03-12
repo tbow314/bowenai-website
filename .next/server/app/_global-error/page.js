@@ -1,0 +1,10 @@
+var R=require("../../chunks/ssr/[turbopack]_runtime.js")("server/app/_global-error/page.js")
+R.c("server/chunks/ssr/[root-of-the-server]__bf59571a._.js")
+R.c("server/chunks/ssr/66d1e_next_dist_d41a91ad._.js")
+R.c("server/chunks/ssr/66d1e_next_dist_ce8ae010._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__4deba010._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__19c085c0._.js")
+R.c("server/chunks/ssr/66d1e_next_dist_998bad4a._.js")
+R.c("server/chunks/ssr/bowenai-website__next-internal_server_app__global-error_page_actions_2f5c56de.js")
+R.m(79660)
+module.exports=R.m(79660).exports

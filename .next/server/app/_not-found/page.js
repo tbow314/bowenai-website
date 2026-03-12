@@ -1,0 +1,13 @@
+var R=require("../../chunks/ssr/[turbopack]_runtime.js")("server/app/_not-found/page.js")
+R.c("server/chunks/ssr/[root-of-the-server]__2b9b0f87._.js")
+R.c("server/chunks/ssr/66d1e_next_dist_d41a91ad._.js")
+R.c("server/chunks/ssr/66d1e_next_dist_esm_build_templates_app-page_d7351711.js")
+R.c("server/chunks/ssr/[root-of-the-server]__4deba010._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__19c085c0._.js")
+R.c("server/chunks/ssr/66d1e_next_dist_998bad4a._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__023fc566._.js")
+R.c("server/chunks/ssr/66d1e_next_dist_client_components_59cdc491._.js")
+R.c("server/chunks/ssr/66d1e_next_dist_client_components_builtin_forbidden_cc6ac156.js")
+R.c("server/chunks/ssr/bowenai-website__next-internal_server_app__not-found_page_actions_2e733e10.js")
+R.m(39820)
+module.exports=R.m(39820).exports

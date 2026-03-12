@@ -1,0 +1,171 @@
+[00:00:01.765] Server  LOG     ✓ Ready in 1281ms
+[00:00:06.674] Server  ERROR   ⨯ Error: Event handlers cannot be passed to Client Component props.
+  <div className=... style={{...}} onMouseEnter={function onMouseEnter} onMouseLeave=... children=...>
+                                                ^^^^^^^^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+[00:00:06.850] Server  ERROR   ⨯ Error: Event handlers cannot be passed to Client Component props.
+  <div className=... style={{...}} onMouseEnter=... onMouseLeave={function onMouseLeave} children=...>
+                                                                 ^^^^^^^^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+[00:00:07.093] Server  ERROR   ⨯ Error: Event handlers cannot be passed to Client Component props.
+  <div className=... style={{...}} onMouseEnter={function onMouseEnter} onMouseLeave=... children=...>
+                                                ^^^^^^^^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+[00:00:07.307] Server  ERROR   ⨯ Error: Event handlers cannot be passed to Client Component props.
+  <div className=... style={{...}} onMouseEnter=... onMouseLeave={function onMouseLeave} children=...>
+                                                                 ^^^^^^^^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+[00:00:07.466] Server  ERROR   ⨯ Error: Event handlers cannot be passed to Client Component props.
+  <div className=... style={{...}} onMouseEnter={function onMouseEnter} onMouseLeave=... children=...>
+                                                ^^^^^^^^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+[00:00:07.621] Server  ERROR   ⨯ Error: Event handlers cannot be passed to Client Component props.
+  <div className=... style={{...}} onMouseEnter=... onMouseLeave={function onMouseLeave} children=...>
+                                                                 ^^^^^^^^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+[00:00:07.835] Server  ERROR   ⨯ Error: Event handlers cannot be passed to Client Component props.
+  <div className=... style={{...}} onMouseEnter={function onMouseEnter} onMouseLeave=... children=...>
+                                                ^^^^^^^^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+[00:00:08.016] Server  ERROR   ⨯ Error: Event handlers cannot be passed to Client Component props.
+  <div className=... style={{...}} onMouseEnter=... onMouseLeave={function onMouseLeave} children=...>
+                                                                 ^^^^^^^^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+[00:00:08.218] Server  ERROR   ⨯ Error: Event handlers cannot be passed to Client Component props.
+  <div className=... style={{...}} onMouseEnter={function onMouseEnter} onMouseLeave=... children=...>
+                                                ^^^^^^^^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+[00:00:08.421] Server  ERROR   ⨯ Error: Event handlers cannot be passed to Client Component props.
+  <div className=... style={{...}} onMouseEnter=... onMouseLeave={function onMouseLeave} children=...>
+                                                                 ^^^^^^^^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+[00:00:09.078] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:09.227] Browser ERROR   uncaughtError: Error: Event handlers cannot be passed to Client Component props.
+  <div className=... style={{...}} onMouseEnter=... onMouseLeave={function onMouseLeave} children=...>
+                                                                 ^^^^^^^^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+[00:01:26.339] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:01:26.715] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:23:41.121] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:32:12.137] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:13:08.181] Server  LOG     ✓ Compiled in 443ms
+[01:13:08.207] Server  WARN    ⚠ Fast Refresh had to perform a full reload when ./bowenai-website/node_modules/next/dist/client/image-component.js changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[01:13:09.092] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:13:10.103] Server  WARN    ⚠ Fast Refresh had to perform a full reload when ./bowenai-website/node_modules/next/dist/client/image-component.js changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[01:13:10.574] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:13:12.669] Server  LOG     ✓ Compiled in 39ms
+[01:13:12.676] Server  WARN    ⚠ Fast Refresh had to perform a full reload when ./bowenai-website/node_modules/next/dist/client/image-component.js changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[01:13:13.326] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:13:15.323] Server  WARN    ⚠ Fast Refresh had to perform a full reload when ./bowenai-website/node_modules/next/dist/client/image-component.js changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[01:13:15.713] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:13:33.336] Server  LOG     ✓ Compiled in 238ms
+[01:13:34.753] Browser WARN    Image with src "/mascot.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:13:38.727] Server  LOG     ✓ Compiled in 633ms
+[01:14:40.410] Server  LOG     ✓ Compiled in 131ms
+[01:14:48.290] Server  LOG     ✓ Compiled in 639ms
+[01:15:20.673] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:15:21.275] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="/bowenai-w...">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <RootLayout>
+                        <html lang="en" className="dark scrol...">
+                          <head>
+                          <body
++                           className="space_grotesk_3fc8433f-module__clatVG__variable jetbrains_mono_ec701b80-module_..."
+-                           className="space_grotesk_3fc8433f-module__clatVG__variable jetbrains_mono_ec701b80-module_..."
+                          >
+                  ...
+
+[01:15:21.275] Browser WARN    Image with src "/mascot.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:15:23.424] Server  LOG     ○ Compiling /_not-found/page ...
+[01:15:26.111] Server  ERROR   ⨯ "The requested resource isn't a valid image for" "/dashboard-main.png" "received" null
+[01:15:26.130] Server  ERROR   ⨯ "The requested resource isn't a valid image for" "/ad-porsche-context.png" "received" null
+[01:15:26.141] Server  ERROR   ⨯ "The requested resource isn't a valid image for" "/portfolio-epic.png" "received" null
+[01:15:26.188] Server  ERROR   ⨯ "The requested resource isn't a valid image for" "/ad-porsche.png" "received" null
+[01:15:35.795] Server  ERROR   ⨯ "The requested resource isn't a valid image for" "/portfolio-epic.png" "received" null
+[01:15:35.801] Server  ERROR   ⨯ "The requested resource isn't a valid image for" "/dashboard-main.png" "received" null
+[01:15:35.828] Server  ERROR   ⨯ "The requested resource isn't a valid image for" "/ad-porsche.png" "received" null
+[01:16:21.144] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:16:21.364] Browser WARN    Image with src "/ad-car.png" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[01:16:21.364] Browser WARN    Image with src "/mascot.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:17:12.139] Server  LOG     ○ Compiling /websites ...
+[01:17:16.395] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:19:29.974] Server  LOG     ✓ Compiled in 390ms
+[01:21:52.774] Server  LOG     ✓ Compiled in 595ms
+[01:21:58.161] Server  LOG     ✓ Compiled in 474ms
+[01:22:01.132] Server  LOG     ✓ Compiled in 101ms
+[01:22:38.790] Server  ERROR   ⨯ "The requested resource isn't a valid image for" "/ad-porsche.png" "received" null
+[01:22:38.791] Server  ERROR   ⨯ "The requested resource isn't a valid image for" "/ad-porsche-context.png" "received" null
+[01:22:38.850] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:22:39.116] Browser WARN    Image with src "/mascot.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:24:06.354] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:24:06.632] Browser WARN    Image with src "/mascot.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:24:14.873] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:24:14.898] Server  ERROR   ⨯ "The requested resource isn't a valid image for" "/ad-porsche.png" "received" null
+[01:24:15.096] Server  ERROR   ⨯ "The requested resource isn't a valid image for" "/ad-porsche-context.png" "received" null
+[01:24:15.238] Browser WARN    Image with src "/mascot.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:24:58.618] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:24:58.903] Browser WARN    Image with src "/mascot.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:25:22.117] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:25:22.386] Browser WARN    Image with src "/mascot.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:26:49.422] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:26:49.728] Browser WARN    Image with src "/mascot.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:31:12.142] Server  LOG     ✓ Compiled in 2s
+[01:49:41.634] Server  LOG     ✓ Compiled in 864ms
+[01:50:13.878] Server  LOG     ✓ Compiled in 338ms
+[01:50:19.890] Server  LOG     ✓ Compiled in 183ms
+[01:50:34.938] Server  LOG     ✓ Compiled in 100ms
+[01:50:55.585] Server  LOG     ✓ Compiled in 490ms
+[02:33:04.889] Browser WARN    Image with src "/site-epicurean.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[02:33:04.891] Browser WARN    Image with src "/dashboard-preview.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[02:33:05.595] Browser WARN    Image with src "/ad-car.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[02:33:07.429] Browser WARN    Image with src "/site-apex-roofing.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[02:33:07.430] Browser WARN    Image with src "/site-mario-rudolph.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[02:33:11.881] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[02:33:29.886] Server  LOG     ○ Compiling /dashboards ...
+[02:37:49.183] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:37:49.467] Browser WARN    Image with src "/mascot.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[02:37:49.467] Browser WARN    Image with src "/site-epicurean.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[02:37:49.467] Browser WARN    Image with src "/dashboard-preview.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[02:37:49.467] Browser WARN    Image with src "/ad-car.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[02:37:49.467] Browser WARN    Image with src "/site-apex-roofing.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[02:37:49.467] Browser WARN    Image with src "/site-mario-rudolph.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[02:41:10.556] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:43:48.613] Server  LOG     ✓ Compiled in 950ms
+[02:43:49.145] Browser WARN    Image with src "/ad-car-context.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[02:43:49.145] Browser WARN    Image with src "/bento-consulting.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[02:43:49.964] Server  LOG     ✓ Compiled in 175ms
+[03:01:35.337] Server  LOG     ✓ Compiled in 389ms
+[03:01:37.659] Server  LOG     ✓ Compiled in 91ms
+[03:02:03.712] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[03:02:04.156] Browser WARN    Image with src "/bento-consulting.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[03:02:04.156] Browser WARN    Image with src "/scraped-eleven-madison.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[03:02:04.156] Browser WARN    Image with src "/scraped-linear-dashboard.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[03:02:04.156] Browser WARN    Image with src "/scraped-porsche-ad.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[03:02:04.156] Browser WARN    Image with src "/scraped-golany-architecture.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[03:03:52.212] Server  LOG     ✓ Compiled in 495ms

@@ -1,0 +1,22 @@
+{
+  "devFiles": [],
+  "ampDevFiles": [],
+  "polyfillFiles": [
+    "static/chunks/66d1e_next_dist_build_polyfills_polyfill-nomodule.js"
+  ],
+  "lowPriorityFiles": [],
+  "rootMainFiles": [
+    "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_b6ae17e3._.js",
+    "static/chunks/66d1e_next_dist_compiled_react-dom_dfb079de._.js",
+    "static/chunks/66d1e_next_dist_compiled_react-server-dom-turbopack_4155033c._.js",
+    "static/chunks/66d1e_next_dist_compiled_next-devtools_index_f9eaa109.js",
+    "static/chunks/66d1e_next_dist_compiled_096d27e4._.js",
+    "static/chunks/66d1e_next_dist_client_4dea800a._.js",
+    "static/chunks/66d1e_next_dist_a094f792._.js",
+    "static/chunks/66d1e_@swc_helpers_cjs_c8ddeb28._.js",
+    "static/chunks/bowenai-website_a0ff3932._.js",
+    "static/chunks/turbopack-bowenai-website_776437b5._.js"
+  ],
+  "pages": {},
+  "ampFirstPages": []
+}
